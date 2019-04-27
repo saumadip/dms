@@ -1,0 +1,12 @@
+Server Startup
+
+The server can be started in ACTIVE or PASSIVE mode by setting the property in device.invalidationStrategy
+
+ACTIVE: Devices are invalidated by their own timer task, invalidation should happen strictly
+        along the specified time in device.staleDeviceTimeinSec.
+
+PASSIVE: Devices are invalidated by a separate service.
+         So, device.staleDeviceTimeinSec indicates devices will be invalidated anytime after the device.staleDeviceTimeinSec
+         this is another strategy, this can be enhanced to throttle down staleness cycle.
+
+start scripts for unix and linux are located in \scripts or after the build can in found in the /bin dir of the zip file.

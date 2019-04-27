@@ -1,0 +1,130 @@
+{
+	"variables": [],
+	"info": {
+		"name": "DMS",
+		"_postman_id": "a44d4d66-b4da-be5b-028a-9c304c2546b9",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Listing devices",
+			"request": {
+				"url": "http://localhost:8080/device",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"deviceName\":\"ssdsd\",\n\t\"secretKey\":\"secret\"\n}"
+				},
+				"description": "Includes names and status of devices, but not secret keys"
+			},
+			"response": []
+		},
+		{
+			"name": "Device registration",
+			"request": {
+				"url": "http://localhost:8080/device",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"deviceName\":\"Device\",\n\t\"secretKey\":\"secretKey\"\n}"
+				},
+				"description": "Each device has an associated human-friendly name, secret key and status.\nClient provides name and secret key, while the status is initially set to\nNEW. Neither name nor secret key are assumed to be unique."
+			},
+			"response": []
+		},
+		{
+			"name": "Listing devices by status",
+			"request": {
+				"url": "http://localhost:8080/device/status/NEW",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"deviceName\":\"ssdsd\",\n\t\"secretKey\":\"secret\"\n}"
+				},
+				"description": "Same as 'Listing devices' but only devices with required status are returned.\n\nIncludes names and status of devices, but not secret keys"
+			},
+			"response": []
+		},
+		{
+			"name": "Device status update",
+			"request": {
+				"url": "http://localhost:8080//device/927f8cf2-f8dd-4d3e-82f9-ed4b1cdef5a2",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"deviceName\": \"Device\",\n        \"secretKey\":\"secretKey\",\n        \"deviceStatus\": \"OK\"\n}\n"
+				},
+				"description": "Client can set a single device status to OK or UNHEALTHY, but he must provide\nsecret key associated with the device as part of the request. Otherwise\nupdate attempt is rejected."
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieval of device details",
+			"request": {
+				"url": "http://localhost:8080/device/1cda2f5f-574f-4316-b673-cb4205ad9864",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"deviceName\":\"ssdsd\",\n\t\"secretKey\":\"secret\"\n}"
+				},
+				"description": "Returns name, secret key and current status of a single device."
+			},
+			"response": []
+		},
+		{
+			"name": "Quering Device using GraphQL",
+			"request": {
+				"url": "http://localhost:8080/device/query",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\talldevices \n\t{\n\t\tdeviceID\n\t\tdeviceName\n\t\tdeviceStatus\n\t}\n\t\n\tstatus(deviceStatus: \"NEW\") \n\t{\n\t\t\n\t\tdeviceID\n\t\tdeviceName\n\t\tdeviceStatus\n\t}\n\t\n\tdevice(deviceID: \"1cda2f5f-574f-4316-b673-cb4205ad9864\") {\n\t\tdeviceID\n\t\tdeviceName\n\t\tsecretKey\n\t\tdeviceStatus\n\t} \n\t\n\t\n}"
+				},
+				"description": "Querying devices with graphQL"
+			},
+			"response": []
+		}
+	]
+}

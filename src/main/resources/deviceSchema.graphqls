@@ -1,0 +1,22 @@
+schema {
+    query: Query
+}
+
+type Query {
+    alldevices: [Device]
+    device(deviceID: ID): DeviceWithSecret
+    status(deviceStatus: String): [Device]
+}
+
+type Device {
+    deviceID: ID
+    deviceName: String!
+    deviceStatus: String!
+}
+
+type DeviceWithSecret {
+    deviceID: ID
+    deviceName: String!
+    deviceStatus: String!
+    secretKey: String
+}
