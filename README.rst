@@ -1,4 +1,4 @@
-Device Manager REST service - recruitment task
+Device Manager REST service
 ==============================================
 
 Create a simple REST (or GraphQL) service (no user interface required) for 
@@ -43,44 +43,3 @@ Note:
 - Restarting application should cause loss of data, do not use external
   persistence layer (database, in-memory database, Hibernate etc).
   
-Technical requirements
-----------------------
-
-- Service should be implemented in Java, and it should run on Linux.
-
-- It should correctly handle concurrent access by multiple clients.
-
-- Code quality and good application architecture matters. Including 
-  automated tests at appropriate layers is expected.
-
-- Either Maven or Gradle should be used as build system.
-
-- Scripts for compiling and running the service should be included, as well as
-  short instructions for running the service.
-
-- Any free libraries/frameworks that Maven/Gradle can download from public
-  repositories is allowed.
-
-- Building and running the system should not require external system
-  dependencies apart from basic ones like Java, Maven/Gradle or Docker.
-  
-- Please keep the solution simple, don't include dependencies that are not
-  related to solving requested use-cases.
-
-Delivery
---------
-
-The code should be commited to a new branch in this repository, and merge request
-to 'master' branch should be created when solution is ready.
-
-Quality is more important than speed, so sending good solution after 2 weeks is 
-better than sending half-baked solution without tests after 2 days. However, 
-please include the information of the total amount of time spent on the task.
-
-If you have questions about use-cases, technical requirements or delivery,
-please just ask.
-
-Confidentiality
----------------
-
-Please don't share the details of the task with other potential candidates ;)
